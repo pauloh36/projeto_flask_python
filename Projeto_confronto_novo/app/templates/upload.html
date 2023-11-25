@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Upload de Arquivos</title>
+</head>
+<body>
+    <div id="menu">
+      <a href="{{ url_for('homepage') }}">Início</a>
+      <a href="{{ url_for('upload') }}">Upload</a>
+      <a href="{{ url_for('processos') }}">Processos</a>
+
+    </div>
+
+    <h1>Upload de Arquivos</h1>
+
+    <form method="POST" enctype="multipart/form-data" >
+        <input type="file" name="btn_upload_arquivos" multiple accept=".xls, .xlsx">
+        <input type="submit" value="Enviar">
+    </form>
+
+    <h1>Lista de Arquivos</h1>
+
+        <a href="{{ url_for('processar_arquivo') }}"><button>Importar arquivos</button> </a>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Lista de arquivos carregados</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for arquivo in arquivos %}
+                    <tr>
+                        <td>{{ arquivo }}</td>
+                        <td><a href="{{ url_for('download_arquivo_enviado', nome_arquivo=arquivo) }}">Baixar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+</body>
+</html>

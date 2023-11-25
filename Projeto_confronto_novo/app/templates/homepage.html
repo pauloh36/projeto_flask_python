@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Home</title>
+</head>
+<body>
+    <div id="menu">
+      <a href="{{ url_for('homepage') }}">Início</a>
+      <a href="{{ url_for('upload') }}">Upload</a>
+      <a href="{{ url_for('processos') }}">Processos</a>
+    </div>
+
+    <h1>Bem vindo a Pagina inicial</h1>
+</body>
+</html>

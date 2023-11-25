@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Upload de Arquivos</title>
+</head>
+<body>
+    <div id="menu">
+      <a href="{{ url_for('homepage') }}">Início</a>
+      <a href="{{ url_for('upload') }}">Upload</a>
+      <a href="{{ url_for('processos') }}">Processos</a>
+
+    </div>
+
+    <h1>Processos</h1>
+
+    <div>
+        <form action="/gerar_arquivo" method="POST">
+            <label for="dt_inicio">De:</label>
+            <input type="date" id="dt_inicio" name="dt_inicio">
+            <label for="dt_fim">Até:</label>
+            <input type="date" id="dt_fim" name="dt_fim">
+        </form>
+    </div>
+
+    <div>
+
+        <a href="{{ url_for('gerar_arquivo')}}"><button>Importar arquivos</button> </a>
+
+    </div>
+
+
+    <h1>Lista de Arquivos</h1>
+
+
+
+        <table>
+                <tr>
+                    <th>Filial</th>  <!-- COLUNA FILIAL FILIAL -->
+                    <th>Arquivo</th>  <!-- COLUNA ARQUIVO -->
+                </tr>
+            <tbody>
+                {% for dados in busca_dados %}
+                    <tr>
+                        <td>{{ dados[1] }}</td>  <!-- LINHA FILIAL -->
+                        <td>{{ dados[0] }}</td>  <!-- LINHA NOME ARQUIVO -->
+                        <td><input type="checkbox" name="selecionados" value="{{ dados[0] }}"></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+
+</body>
+</html>
